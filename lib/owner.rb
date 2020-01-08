@@ -44,8 +44,8 @@ class Owner
   def buy_cat(name)
     # Make a new instance of the appropriate pet, initializing it with 
     # that name and the owner who is purchasing it.
-    # binding.pry
-
+    binding.pry
+    Cat.new
   end
 
 end
