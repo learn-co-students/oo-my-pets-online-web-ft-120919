@@ -1,8 +1,7 @@
 class Owner
-  attr_accessor :owner, :pets
+  attr_accessor :owner
   attr_reader :species
   @@all = []
-  @@pets = {:dogs => [], :cats => [] }
   def initialize(owner)
     @owner = owner
     @species = "human"
@@ -42,23 +41,19 @@ class Owner
   end
   # can buy a cat that is an instance of the cat class
   def buy_cat(name)
-    owner = self
-    cat = Cat.new(name, owner)
-    @@pets[:cats] << cat
+    Cat.new(name, self)
   end
 
   def buy_dog(name)
-    owner = self
-    dog = Dog.new(name, owner)
-    @@pets[:dogs] << dog
+    Dog.new(name, self)
   end
 
   def walk_dogs
-    @@pets[:dogs].map { |dog| dog.mood = "happy" }
+    self.dogs.each { |dog| dog.mood = "happy" }
   end
 
   def feed_cats
-    @@pets[:cats].map { |cat| cat.mood = "happy" }
+    self.cats.each { |cat| cat.mood = "happy" }
   end
 
   def sell_pets
